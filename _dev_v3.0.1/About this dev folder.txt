@@ -1,0 +1,21 @@
+This is a backup for 
+- Database (migrations and seeders)
+- Stock images (store and template)
+- Stripe connection
+
+
+Location for folders
+Helpers - Goes in  app
+migrations - Goes in database folder 
+seeders - Goes in databse folder
+images - Goes in storage/app/public/
+
+Do not store migrations in the database directoy if migrations for the same tables exists
+
+How to link images?
+Command: php artisan storage:link
+
+Symbolic link documentation
+https://laravel.com/docs/9.x/filesystem
+
+
