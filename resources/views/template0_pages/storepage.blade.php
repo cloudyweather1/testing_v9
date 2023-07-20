@@ -15,16 +15,17 @@
                         @foreach ($product_details as $data)
 
 
-
                         <div class="col-sm-6 col-md-6 col-lg-4 ftco-animate">
                             <div class="product">
-                                <a href="#" class="img-prod"><img class="img-fluid"
-                                        src="{{ asset('storage/' . $data->product_image1) }}" alt="Colorlib Template">
+                                <a href="{{ route('store.details', ['id' => $data->id]) }}" class="img-prod"><img
+                                        class="img-fluid" src="{{ asset('storage/' . $data->product_image1) }}"
+                                        alt="Colorlib Template">
                                     <span class="status">30%</span>
                                     <div class="overlay"></div>
                                 </a>
                                 <div class="text py-3 px-3">
-                                    <h3><a href="#">{{ $data->product_title }}</a></h3>
+                                    <h3><a href="{{ route('store.details', ['id' => $data->id]) }}">{{
+                                            $data->product_title }}</a></h3>
                                     <div class="d-flex">
                                         <div class="pricing">
                                             <p class="price"><span class="mr-2 price-dc">$120.00</span><span

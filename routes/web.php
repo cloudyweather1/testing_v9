@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\CartController;
+use App\Http\Controllers\DetailsController;
 use App\Http\Controllers\ProductController;
 use Illuminate\Support\Facades\Route;
 
@@ -26,3 +28,11 @@ Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Route::get('/store', [ProductController::class, 'index'])->name('store');
+
+Route::get('/details/{id}', [DetailsController::class, 'index'])->name('store.details');
+
+Route::middleware(['auth'])->group(function () {
+    Route::get('/cart', [CartController::class, 'index'])->name('cart');
+
+    Route::put('/cart', [CartController::class, 'store'])->name('cart.store');
+});
