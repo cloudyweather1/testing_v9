@@ -33,7 +33,26 @@
                                 @foreach($cart_details as $data)
 
                                 <tr class="text-center">
-                                    <td class="product-remove"><a href="#"><span class="ion-ios-close"></span></a></td>
+                                    <td class="product-remove">
+
+
+                                        <form action="{{ route('cart.destroy', ['id' => $data->pivot->id]) }}"
+                                            method="POST">
+                                            @method('DELETE')
+                                            @csrf
+                                            <button class="btn p-2" type="submit"><span
+                                                    class="ion-ios-close"></span></button>
+
+                                            <input type="hidden" name="cart_id" value="{{ $data->pivot->id }}">
+                                            <input type="hidden" name="product" value="{{ $data->id }}">
+
+                                        </form>
+
+                                        {{-- <a href="#"><span class="ion-ios-close"></span></a> --}}
+
+
+
+                                    </td>
 
                                     <td class="image-prod">
                                         <div class="img"

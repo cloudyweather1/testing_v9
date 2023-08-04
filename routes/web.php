@@ -38,6 +38,8 @@ Route::middleware(['auth'])->group(function () {
 
     Route::put('/cart', [CartController::class, 'store'])->name('cart.store');
 
+    Route::delete('/cart/{id}', [CartController::class, 'destroy'])->name('cart.destroy');
+
     Route::get('/checkout', [CheckoutController::class, 'index'])->name('checkout');
 
     Route::get('/checkout/success/{payment}/{id}', CheckoutSuccessController::class)->name('checkout.success');
