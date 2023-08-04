@@ -1,6 +1,14 @@
 <x-layouts.layout-template0>
 
 
+
+    @if(empty($cart_details))
+    <h1>Cart is empty</h1>
+    @else
+
+
+
+
     <section class="ftco-section ftco-cart">
         <div class="container">
             <div class="row">
@@ -18,15 +26,23 @@
                                 </tr>
                             </thead>
                             <tbody>
+
+
+
+
+                                @foreach($cart_details as $data)
+
                                 <tr class="text-center">
                                     <td class="product-remove"><a href="#"><span class="ion-ios-close"></span></a></td>
 
                                     <td class="image-prod">
-                                        <div class="img" style="background-image:url(images/product-3.jpg);"></div>
+                                        <div class="img"
+                                            style="background-image:url({{ asset('storage/' . $data->product_image1) }});">
+                                        </div>
                                     </td>
 
                                     <td class="product-name">
-                                        <h3>Young Woman Wearing Dress</h3>
+                                        <h3>{{ $data->product_title }}</h3>
                                         <p>Far far away, behind the word mountains, far from the countries</p>
                                     </td>
 
@@ -35,36 +51,23 @@
                                     <td class="quantity">
                                         <div class="input-group mb-3">
                                             <input type="text" name="quantity"
-                                                class="quantity form-control input-number" value="1" min="1" max="100">
+                                                class="quantity form-control input-number"
+                                                value="{{ $data->pivot->cart_quantity }}" min="1" max="100">
                                         </div>
                                     </td>
 
-                                    <td class="total">$4.90</td>
+                                    <td class="total">${{ $checkout->formatPrice($data->cartQuantityPrice()) }}</td>
                                 </tr><!-- END TR-->
 
-                                <tr class="text-center">
-                                    <td class="product-remove"><a href="#"><span class="ion-ios-close"></span></a></td>
+                                @endforeach
 
-                                    <td class="image-prod">
-                                        <div class="img" style="background-image:url(images/product-4.jpg);"></div>
-                                    </td>
 
-                                    <td class="product-name">
-                                        <h3>Young Woman Wearing Dress</h3>
-                                        <p>Far far away, behind the word mountains, far from the countries</p>
-                                    </td>
 
-                                    <td class="price">$15.70</td>
 
-                                    <td class="quantity">
-                                        <div class="input-group mb-3">
-                                            <input type="text" name="quantity"
-                                                class="quantity form-control input-number" value="1" min="1" max="100">
-                                        </div>
-                                    </td>
 
-                                    <td class="total">$15.70</td>
-                                </tr><!-- END TR-->
+
+
+
                             </tbody>
                         </table>
                     </div>
@@ -101,6 +104,6 @@
 
 
 
-
+    @endif
 
 </x-layouts.layout-template0>

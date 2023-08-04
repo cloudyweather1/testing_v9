@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\CartController;
+use App\Http\Controllers\CheckoutController;
+use App\Http\Controllers\CheckoutSuccessController;
 use App\Http\Controllers\DetailsController;
 use App\Http\Controllers\ProductController;
 use Illuminate\Support\Facades\Route;
@@ -35,4 +37,8 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/cart', [CartController::class, 'index'])->name('cart');
 
     Route::put('/cart', [CartController::class, 'store'])->name('cart.store');
+
+    Route::get('/checkout', [CheckoutController::class, 'index'])->name('checkout');
+
+    Route::get('/checkout/success/{payment}/{id}', CheckoutSuccessController::class)->name('checkout.success');
 });

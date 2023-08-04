@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Helpers\CheckoutHelper;
 use App\Models\Cart;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -11,7 +12,16 @@ class CartController extends Controller
 {
     public function index()
     {
-        return view('template0_pages/cartpage');
+        $cart_details = Auth::user()->products;
+
+        $checkout = new CheckoutHelper($cart_details);
+
+        $checkout->calculateTotal();
+
+        return view('template0_pages/cartpage', [
+            'cart_details' => $cart_details,
+            'checkout' => $checkout,
+        ]);
     }
 
     public function store(Request $request)
