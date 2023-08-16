@@ -33,6 +33,7 @@
                                 @foreach($cart_details as $data)
 
                                 <tr class="text-center">
+
                                     <td class="product-remove">
 
 
@@ -65,15 +66,24 @@
                                         <p>Far far away, behind the word mountains, far from the countries</p>
                                     </td>
 
-                                    <td class="price">$4.90</td>
+                                    <td class="price">${{ $checkout->formatPrice($data->product_price) }}</td>
 
                                     <td class="quantity">
-                                        <div class="input-group mb-3">
-                                            <input type="text" name="quantity"
-                                                class="quantity form-control input-number"
-                                                value="{{ $data->pivot->cart_quantity }}" min="1" max="100">
-                                        </div>
+                                        <form action="{{ route('cart.update', ['id' => $data->pivot->id]) }}"
+                                            method="POST">
+                                            @method('PUT')
+                                            @csrf
+                                            <div class="input-group mb-3">
+                                                <input type="text" name="cart_quantity"
+                                                    class="quantity form-control input-number"
+                                                    value="{{ $data->pivot->cart_quantity }}" min="1" max="100">
+                                                <button class="btn px-2"><span class="ion-ios-refresh"></span></button>
+                                            </div>
+                                            <input type="hidden" value="{{ $data->pivot->id }}" name="cart_id">
+                                            <input type="hidden" value="{{ $data->id }}" name="product_id">
+                                        </form>
                                     </td>
+
 
                                     <td class="total">${{ $checkout->formatPrice($data->cartQuantityPrice()) }}</td>
                                 </tr><!-- END TR-->
@@ -98,7 +108,7 @@
                         <h3>Cart Totals</h3>
                         <p class="d-flex">
                             <span>Subtotal</span>
-                            <span>$20.60</span>
+                            <span>${{ $checkout->formatPrice($checkout->getSubtotal()) }}</span>
                         </p>
                         <p class="d-flex">
                             <span>Delivery</span>
@@ -111,7 +121,7 @@
                         <hr>
                         <p class="d-flex total-price">
                             <span>Total</span>
-                            <span>$17.60</span>
+                            <span>${{ $checkout->formatPrice($checkout->getTotal()) }}</span>
                         </p>
                     </div>
                     <p class="text-center"><a href="checkout.html" class="btn btn-primary py-3 px-4">Proceed to

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Helpers\CheckoutHelper;
+use App\Helpers\StripeHelper;
 use App\Models\Order;
 use App\Models\Order_product;
 use Illuminate\Http\Request;
@@ -25,6 +26,8 @@ class CheckoutSuccessController extends Controller
             exit;
         }
 
+        dd('you should not reach this far');
+
         // calculate total
         $checkout->calculateTotal();
 
@@ -40,6 +43,16 @@ class CheckoutSuccessController extends Controller
                 ];
 
                 $completed = true;
+                break;
+
+            case 'stripe':
+                // code...
+                $payment_object = new StripeHelper();
+                $checkout_order = $payment_object->getCheckoutOrder($id);
+                // dd($checkout_order);
+                $completed = $payment_object->isCheckoutCompleted($checkout_order);
+                $data = $payment_object->getPaymentDetails($checkout_order);
+
                 break;
 
             default:
@@ -84,5 +97,7 @@ class CheckoutSuccessController extends Controller
 
         // Remove all user cart products
         $user->products()->detach();
+
+        // return redirect('/thanks')->with('message', 'Payment was successful');
     }
 }
