@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\admin\AdminProductController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\CheckoutStripeController;

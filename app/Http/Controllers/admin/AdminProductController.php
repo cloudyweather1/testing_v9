@@ -34,22 +34,25 @@ class AdminProductController extends Controller
     public function store(Request $request)
     {
         $product_data = new Product();
+
         $product_data->product_title = $request->product_title;
-        $product_data->product_short_description = $request->product_short_description;
-        $product_data->product_full_description = $request->product_full_description;
+        $product_data->product_description = $request->product_description;
         $product_data->product_price = $request->product_price;
         $product_data->product_quantity = $request->product_quantity;
-        $product_data->product_image_path = 'images/products/';
-
-        if (!$request->hasFile('product_image_upload')) {
-            return redirect()->route('admin.products.create')->with('message', 'Please upload an image');
-        }
-        $filename = $this->getImageUpload($request->file('product_image_upload'));
-        $product_data->product_image = $filename;
-
+        $product_data->product_status = $request->product_status;
         $product_data->product_category = $request->product_category;
-        $product_data->product_group = $request->product_group;
-        $product_data->product_is_active = $request->product_is_active;
+
+        // if (!$request->hasFile('product_image_upload')) {
+        //     return redirect()->route('admin.products.create')->with('message', 'Please upload an image');
+        // }
+        // $filename = $this->getImageUpload($request->file('product_image_upload'));
+        // $product_data->product_image = $filename;
+
+        $product_data->product_image1 = 'images/products/product1.webp';
+        $product_data->product_image2 = 'images/products/product1.webp';
+        $product_data->product_image3 = 'images/products/product1.webp';
+        $product_data->product_image4 = 'images/products/product1.webp';
+
         $product_data->save();
 
         return redirect()->route('admin.products.index')->with('message', 'Product successfully created');
@@ -80,17 +83,12 @@ class AdminProductController extends Controller
     {
         $product_data = Product::findOrFail($id);
         $product_data->product_title = $request->product_title;
-        $product_data->product_short_description = $request->product_short_description;
-        $product_data->product_full_description = $request->product_full_description;
+        $product_data->product_description = $request->product_description;
         $product_data->product_price = $request->product_price;
         $product_data->product_quantity = $request->product_quantity;
-        $product_data->product_image_path = $request->product_image_path;
-
-        $product_data->product_title = $request->product_title;
-
+        $product_data->product_status = $request->product_status;
         $product_data->product_category = $request->product_category;
-        $product_data->product_group = $request->product_group;
-        $product_data->product_is_active = $request->product_is_active;
+
         $product_data->save();
 
         return redirect()->route('admin.products.edit', ['product' => $id])->with('message', 'Product successfully updated');

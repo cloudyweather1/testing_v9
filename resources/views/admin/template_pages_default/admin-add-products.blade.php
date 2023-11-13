@@ -1,4 +1,4 @@
-<x-mylayouts.layout-for-app0>
+<x-layouts.layout-template0>
 
     <div class="container my-5">
         <div class="card">
@@ -23,16 +23,11 @@
                         </div>
 
                         <div class="form-group">
-                            <label for="product_short_description">Short Description:</label>
-                            <textarea class="form-control" rows="3" id="product_short_description"
-                                name="product_short_description" required></textarea>
+                            <label for="product_description">Product Description:</label>
+                            <textarea class="form-control" rows="3" id="product_description" name="product_description"
+                                required></textarea>
                         </div>
 
-                        <div class="form-group">
-                            <label for="product_full_description">Long Description:</label>
-                            <textarea class="form-control" rows="5" id="product_full_description"
-                                name="product_full_description" required></textarea>
-                        </div>
 
                         <div class="form-group">
                             <label for="product_price">Price:</label>
@@ -67,34 +62,17 @@
 
 
                         <div class="form-group">
+                            <label for="product_status">Status:</label>
+                            <input type="text" value="" class="form-control" id="product_status" name="product_status"
+                                required>
+                        </div>
+
+                        <div class="form-group">
                             <label for="product_category">Category:</label>
                             <input type="text" value="" class="form-control" id="product_category"
                                 name="product_category" required>
                         </div>
 
-                        <div class="form-group">
-                            <label for="product_group">Group:</label>
-                            <select class="form-control" id="product_group" name="product_group" required>
-
-
-                                <option value="default">Default</option>
-                                <option value="exclusive">Exlusive</option>
-                                <option value="featured">Featured</option>
-                                <option value="upcoming">Upcoming</option>
-
-
-                            </select>
-                        </div>
-
-
-
-                        <div class="form-group">
-                            <label for="product_is_active">Is active:</label>
-                            <select class="form-control" id="product_is_active" name="product_is_active" required>
-                                <option value="1">Yes</option>
-                                <option value="0">No</option>
-                            </select>
-                        </div>
 
                         <div class="form-group">
                             <button type="submit" class="btn btn-primary">Save</button>
@@ -116,4 +94,4 @@
 
 
 
-</x-mylayouts.layout-for-app0>
+</x-layouts.layout-template0>

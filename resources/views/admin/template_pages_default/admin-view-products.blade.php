@@ -1,4 +1,4 @@
-<x-mylayouts.layout-for-app0>
+<x-layouts.layout-template0>
 
 
 
@@ -41,7 +41,8 @@
 
 
                                     <a class="btn btn-primary btn-sm"
-                                        href="{{ route('store.show', ['id' => $data->id]) }}" target="_blank">View</a>
+                                        href="{{ route('store.details', ['id' => $data->id]) }}"
+                                        target="_blank">View</a>
                                     <a class="btn btn-primary btn-sm"
                                         href="{{ route('admin.products.edit', ['product' => $data->id]) }}">
                                         Edit</a>
@@ -68,4 +69,4 @@
 
 
 
-</x-mylayouts.layout-for-app0>
+</x-layouts.layout-template0>

@@ -1,4 +1,4 @@
-<x-mylayouts.layout-for-app0>
+<x-layouts.layout-template0>
 
     <div class="container my-5">
         <div class="card">
@@ -26,16 +26,12 @@
                     </div>
 
                     <div class="form-group">
-                        <label for="product_short_description">Short Description:</label>
-                        <textarea class="form-control" rows="3" id="product_short_description"
-                            name="product_short_description">{{ $data->product_short_description }}</textarea>
+                        <label for="product_description">Product Description:</label>
+                        <textarea class="form-control" rows="3" id="product_description"
+                            name="product_description">{{ $data->product_description }}</textarea>
                     </div>
 
-                    <div class="form-group">
-                        <label for="product_full_description">Long Description:</label>
-                        <textarea class="form-control" rows="5" id="product_full_description"
-                            name="product_full_description">{{ $data->product_full_description }}</textarea>
-                    </div>
+
 
                     <div class="form-group">
                         <label for="product_price">Price:</label>
@@ -49,11 +45,7 @@
                             id="product_quantity" name="product_quantity">
                     </div>
 
-                    <div class="form-group">
-                        <label for="product_image_path">Image Path:</label>
-                        <input type="text" value="{{ $data->product_image_path}}" class="form-control"
-                            id="product_image_path" name="product_image_path">
-                    </div>
+
                     <div class="form-group">
                         <label for="product_image">Image:</label>
                         <input type="text" value="{{ $data->product_image }}" class="form-control" id="product_image"
@@ -80,42 +72,19 @@
 
 
                     <div class="form-group">
+                        <label for="product_status">Status:</label>
+                        <input type="text" value="{{ $data->product_status }}" class="form-control" id="product_status"
+                            name="product_status">
+                    </div>
+
+
+                    <div class="form-group">
                         <label for="product_category">Category:</label>
                         <input type="text" value="{{ $data->product_category }}" class="form-control"
                             id="product_category" name="product_category">
                     </div>
 
-                    <div class="form-group">
-                        <label for="product_group">Group:</label>
-                        <select class="form-control" id="product_group" name="product_group">
 
-
-                            <option value="{{ $data->product_group }}">{{ Str::ucfirst($data->product_group) }}</option>
-                            <option value="exclusive">Exlusive</option>
-                            <option value="featured">Featured</option>
-                            <option value="upcoming">Upcoming</option>
-                            <option value="none">None</option>
-
-
-                        </select>
-                    </div>
-
-
-
-                    <div class="form-group">
-                        <label for="product_is_active">Is active:</label>
-                        <select class="form-control" id="product_is_active" name="product_is_active">
-
-                            @if($data->product_is_active)
-                            <option value="1">Yes</option>
-                            <option value="0">No</option>
-                            @else
-                            <option value="0">No</option>
-                            <option value="1">Yes</option>
-
-                            @endif
-                        </select>
-                    </div>
 
 
                     <div class="form-group">
@@ -137,4 +106,4 @@
 
 
 
-</x-mylayouts.layout-for-app0>
+</x-layouts.layout-template0>

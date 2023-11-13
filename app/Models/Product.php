@@ -18,4 +18,9 @@ class Product extends Model
     {
         return $this->product_price * $this->pivot->cart_quantity;
     }
+
+    public function getImage()
+    {
+        return asset('storage/'.$this->product_image1);
+    }
 }
