@@ -10,7 +10,7 @@
                     <div class="row d-md-flex no-gutters slider-text js-fullheight align-items-center justify-content-end"
                         data-scrollax-parent="true">
                         <div class="one-third order-md-last img js-fullheight"
-                            style="background-image:url(images/bg_1.jpg);">
+                            style="background-image:url({{ asset('myimages/flower.jpg') }});">
                         </div>
                         <div class="one-forth d-flex js-fullheight align-items-center ftco-animate"
                             data-scrollax=" properties: { translateY: '70%' }">
@@ -37,7 +37,7 @@
                     <div class="row d-flex no-gutters slider-text js-fullheight align-items-center justify-content-end"
                         data-scrollax-parent="true">
                         <div class="one-third order-md-last img js-fullheight"
-                            style="background-image:url(images/bg_2.jpg);">
+                            style="background-image:url({{ asset('template0/images/bg_2.jpg') }});">
                         </div>
                         <div class="one-forth d-flex js-fullheight align-items-center ftco-animate"
                             data-scrollax=" properties: { translateY: '70%' }">

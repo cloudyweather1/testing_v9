@@ -30,7 +30,7 @@
                 <p class="price"><span>${{ $data->product_price }}</span></p>
 
 
-                <p>{{ $data->product_description }}</p>
+                <p>{!! $data->product_description !!}</p>
                 {{-- <p>A small river named Duden flows by their place and supplies it with the necessary
                     regelialia. It
                     is a paradisematic country, in which roasted parts of sentences fly into your mouth.</p>

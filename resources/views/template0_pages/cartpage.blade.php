@@ -1,13 +1,8 @@
 <x-layouts.layout-template0>
 
-
-
-    @if(empty($cart_details))
-    <h1>Cart is empty</h1>
+    @if($checkout->isEmpty())
+    <x-core.cart-empty />
     @else
-
-
-
 
     <section class="ftco-section ftco-cart">
         <div class="container">
@@ -130,7 +125,6 @@
             </div>
         </div>
     </section>
-
 
 
     @endif

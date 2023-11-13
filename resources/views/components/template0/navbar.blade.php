@@ -36,15 +36,54 @@
                     <a class="nav-link dropdown-toggle" href="#" id="dropdown04" data-toggle="dropdown"
                         aria-haspopup="true" aria-expanded="false">Shop</a>
                     <div class="dropdown-menu" aria-labelledby="dropdown04">
-                        <a class="dropdown-item" href="shop.html">Shop</a>
+                        <a class="dropdown-item" href="{{ route('store') }}">Shop</a>
+
+                        <a class="dropdown-item" href="{{ route('store') }}">Shop</a>
+                        <a class="dropdown-item" href="{{ route('store') }}">Shop</a>
+                        <a class="dropdown-item" href="{{ route('store') }}">Shop</a>
+                        <a class="dropdown-item" href="{{ route('store') }}">Shop</a>
+                        <a class="dropdown-item" href="{{ route('store') }}">Shop</a>
+                        <a class="dropdown-item" href="{{ route('store') }}">Shop</a>
+                        <a class="dropdown-item" href="{{ route('store') }}">Shop</a>
+                        <a class="dropdown-item" href="{{ route('store') }}">Shop</a>
+                        <a class="dropdown-item" href="{{ route('store') }}">Shop</a>
+                        <a class="dropdown-item" href="{{ route('store') }}">Shop</a>
+                        <a class="dropdown-item" href="{{ route('store') }}">Shop</a>
+                        <a class="dropdown-item" href="{{ route('store') }}">Shop</a>
+                        <a class="dropdown-item" href="{{ route('store') }}">Shop</a>
+                        <a class="dropdown-item" href="{{ route('store') }}">Shop</a>
+
                         <a class="dropdown-item" href="product-single.html">Single Product</a>
-                        <a class="dropdown-item" href="cart.html">Cart</a>
+                        <a class="dropdown-item" href="{{ route('cart') }}">Cart</a>
                         <a class="dropdown-item" href="checkout.html">Checkout</a>
                     </div>
                 </li>
                 <li class="nav-item"><a href="about.html" class="nav-link">About</a></li>
                 <li class="nav-item"><a href="blog.html" class="nav-link">Blog</a></li>
                 <li class="nav-item"><a href="contact.html" class="nav-link">Contact</a></li>
+
+
+
+
+
+                <li class="nav-item">
+
+
+                    <a class="nav-link" href="{{ route('logout') }}" onclick="event.preventDefault();
+                                  document.getElementById('logout-form').submit();">
+                        {{ __('Logout') }}
+                    </a>
+
+                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                        @csrf
+                    </form>
+
+                </li>
+
+
+
+
+
                 <li class="nav-item cta cta-colored"><a href="cart.html" class="nav-link"><span
                             class="icon-shopping_cart"></span>[0]</a></li>
 

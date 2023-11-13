@@ -23,10 +23,13 @@ class CheckoutSuccessController extends Controller
         // Check if cart is empty
         if ($checkout->isEmpty()) {
             echo 'Cart is empty';
+
+            // return redirect('/cart')->with('message', 'Unable to perform checkout');
+
             exit;
         }
 
-        dd('you should not reach this far');
+        // dd('you should not reach this far');
 
         // calculate total
         $checkout->calculateTotal();

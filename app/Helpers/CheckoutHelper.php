@@ -21,7 +21,11 @@ class CheckoutHelper
 
     public function isEmpty()
     {
-        return (empty($this->products || $this->products->isEmpty())) ? true : false;
+        // return (empty($this->products || $this->products->isEmpty())) ? true : false;
+
+        return (
+            empty($this->products) || $this->products->isEmpty()
+        ) ? true : false;
     }
 
     public function getProducts()

@@ -3,5 +3,5 @@
 
 <form action="{{ route('checkout.stripe') }}" method="POST">
     @csrf
-    <button type="submit" id="checkout-button">Checkout</button>
+    <button class="btn btn-primary py-3 px-4" type="submit" id="checkout-button">Checkout</button>
 </form>
