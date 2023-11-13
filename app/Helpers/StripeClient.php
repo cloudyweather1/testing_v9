@@ -4,7 +4,6 @@ namespace App\Helpers;
 
 class StripeClient
 {
-    // TODO: Let all stripe objects call this file
     public static function getClient()
     {
         try {

@@ -49,3 +49,7 @@ Route::middleware(['auth'])->group(function () {
 
     Route::view('/thanks', 'template0_pages/thanks');
 });
+
+Route::prefix('admin')->middleware(['auth', 'isAdmin'])->name('admin.')->group(function () {
+    Route::resource('products', AdminProductController::class);
+});
