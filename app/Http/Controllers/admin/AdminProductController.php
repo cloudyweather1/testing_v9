@@ -5,6 +5,7 @@ namespace App\Http\Controllers\admin;
 use App\Http\Controllers\Controller;
 use App\Models\Product;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 
 class AdminProductController extends Controller
@@ -42,16 +43,16 @@ class AdminProductController extends Controller
         $product_data->product_status = $request->product_status;
         $product_data->product_category = $request->product_category;
 
-        // if (!$request->hasFile('product_image_upload')) {
-        //     return redirect()->route('admin.products.create')->with('message', 'Please upload an image');
-        // }
-        // $filename = $this->getImageUpload($request->file('product_image_upload'));
-        // $product_data->product_image = $filename;
+        // If image was not upload
+        if (!$request->hasFile('product_image_upload')) {
+            return redirect()->route('admin.products.create')->with('message', 'Please upload an image');
+        }
+        $filename = $this->getImageUpload($request->file('product_image_upload'));
 
-        $product_data->product_image1 = 'images/products/product1.webp';
-        $product_data->product_image2 = 'images/products/product1.webp';
-        $product_data->product_image3 = 'images/products/product1.webp';
-        $product_data->product_image4 = 'images/products/product1.webp';
+        $product_data->product_image1 = 'images/products/'.$filename;
+        $product_data->product_image2 = 'images/products/'.$filename;
+        $product_data->product_image3 = 'images/products/'.$filename;
+        $product_data->product_image4 = 'images/products/'.$filename;
 
         $product_data->save();
 
@@ -82,6 +83,31 @@ class AdminProductController extends Controller
     public function update(Request $request, string $id)
     {
         $product_data = Product::findOrFail($id);
+
+        $upload_ok = false;
+        $oldfilename = $product_data->product_image1;
+
+        // If a new file was uploaded, store in database
+        if ($request->hasFile('product_image_upload')) {
+            $filename = $this->getImageUpload($request->file('product_image_upload'));
+            // dd($filename);
+
+            $product_data->product_image1 = 'images/products/'.$filename;
+            $product_data->product_image2 = 'images/products/'.$filename;
+            $product_data->product_image3 = 'images/products/'.$filename;
+            $product_data->product_image4 = 'images/products/'.$filename;
+
+            $upload_ok = true;
+        }
+
+        // If new file was uploaded, remove old file
+        if ($upload_ok) {
+            // Remove old file
+            if (Storage::disk('public')->exists($oldfilename)) {
+                Storage::disk('public')->delete($oldfilename);
+            }
+        }
+
         $product_data->product_title = $request->product_title;
         $product_data->product_description = $request->product_description;
         $product_data->product_price = $request->product_price;
