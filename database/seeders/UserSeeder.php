@@ -3,7 +3,6 @@
 namespace Database\Seeders;
 
 use Carbon\Carbon;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
@@ -24,7 +23,7 @@ class UserSeeder extends Seeder
                 'password' => Hash::make('Password1'),
                 'email_verified_at' => Carbon::now(),
                 'created_at' => Carbon::now(),
-                'updated_at' => Carbon::now()
+                'updated_at' => Carbon::now(),
             ],
             [
                 'name' => 'Jane Doe',
@@ -32,7 +31,7 @@ class UserSeeder extends Seeder
                 'password' => Hash::make('Password1'),
                 'email_verified_at' => Carbon::now(),
                 'created_at' => Carbon::now(),
-                'updated_at' => Carbon::now()
+                'updated_at' => Carbon::now(),
             ],
         ]);
     }

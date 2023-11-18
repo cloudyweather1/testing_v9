@@ -1,6 +1,8 @@
 <?php
 
+use App\Http\Controllers\admin\AdminDiscountController;
 use App\Http\Controllers\admin\AdminProductController;
+use App\Http\Controllers\admin\AdminProductDiscountController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\CheckoutStripeController;
@@ -52,5 +54,10 @@ Route::middleware(['auth'])->group(function () {
 });
 
 Route::prefix('admin')->middleware(['auth', 'isAdmin'])->name('admin.')->group(function () {
+    // Routes to manage products
     Route::resource('products', AdminProductController::class);
+    // Routes to manage discounts
+    Route::resource('discounts', AdminDiscountController::class);
+    // Routes to assign discounts to products
+    Route::resource('product-discounts', AdminProductDiscountController::class);
 });
